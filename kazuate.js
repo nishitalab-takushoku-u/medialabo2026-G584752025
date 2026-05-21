@@ -13,6 +13,7 @@ let kaisu = 0;
 function hantei() {
   // ここから: 予想回数を1増やして，span#kaisu 要素のテキストを更新
   kaisu=kaisu+1;
+  
   // ここまで: 予想回数を1増やして，span#kaisu 要素のテキストを更新
   
   // ここから: テキストボックスに指定された数値を yoso に代入する
