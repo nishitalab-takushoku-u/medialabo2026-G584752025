@@ -42,11 +42,8 @@ sr.addEventListener('click',sendRequest);
 
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
-  let url='https://www.nishita-lab.org/web-contents/jsons/nhk/{service}-{genre}-j.json';
-  axios.get(url)
-  .then(showResult)
-  .catch(showError)
-  .then(finish);
+  let url='https://www.nishita-lab.org/web-contents/jsons/nhk/g1-0000-j.json';
+  axios.get(url).then(showResult).catch(showError).then(finish);
 }
 
 // 課題6-1: 通信が成功した時の処理は以下に記述
