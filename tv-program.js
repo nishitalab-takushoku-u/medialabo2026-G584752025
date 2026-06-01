@@ -42,7 +42,7 @@ sr.addEventListener('click',sendRequest);
 
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
-  let url='https://www.nishita-lab.org/web-contents/jsons/nhk/g1-0000-j.json';
+  let url='https://www.nishita-lab.org/web-contents/jsons/nhk/e1-0700-j.json';
   axios.get(url).then(showResult).catch(showError).then(finish);
 }
 
@@ -51,8 +51,35 @@ function showResult(resp) {
   let data =resp.data;
   if(typeof data==='String'){
     data=JSON.parse(data);
-    console.log(data);
-    console.log(data.x);
+  }
+  console.log(data);
+  console.log(data.x);
+  let space=document.createElement('div');
+  sr.insertAdjacentElement('afterend',space);
+  for(let z of data.list.e1){
+  let ul=document.createElement('ul');
+  space.insertAdjacentElement('afterend',ul);
+  let list=document.createElement('li');
+  list.textContent=z.start_time;
+  ul.insertAdjacentElement('beforeend',list);
+  list=document.createElement('li');
+  list.textContent=z.end_time;
+  ul.insertAdjacentElement('beforeend',list);
+  list=document.createElement('li');
+  list.textContent=z.service.name;
+  ul.insertAdjacentElement('beforeend',list);
+  list=document.createElement('li');
+  list.textContent=z.title;
+  ul.insertAdjacentElement('beforeend',list);
+  list=document.createElement('li');
+  list.textContent=z.subtitle;
+  ul.insertAdjacentElement('beforeend',list);
+  list=document.createElement('li');
+  list.textContent=z.content;
+  ul.insertAdjacentElement('beforeend',list);
+  list=document.createElement('li');
+  list.textContent=z.act;
+  ul.insertAdjacentElement('beforeend',list);
   }
 }
 
