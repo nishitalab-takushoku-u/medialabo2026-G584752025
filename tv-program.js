@@ -144,12 +144,6 @@ function showResult(resp) {
   let ul=document.createElement('ul');
   space.insertAdjacentElement('afterend',ul);
   let list=document.createElement('li');
-  list.textContent=z.start_time;
-  ul.insertAdjacentElement('beforeend',list);
-  list=document.createElement('li');
-  list.textContent=z.end_time;
-  ul.insertAdjacentElement('beforeend',list);
-  list=document.createElement('li');
   list.textContent=z.service.name;
   ul.insertAdjacentElement('beforeend',list);
   list=document.createElement('li');
@@ -176,12 +170,6 @@ function showResult(resp) {
   let ul=document.createElement('ul');
   space.insertAdjacentElement('afterend',ul);
   let list=document.createElement('li');
-  list.textContent=z.start_time;
-  ul.insertAdjacentElement('beforeend',list);
-  list=document.createElement('li');
-  list.textContent=z.end_time;
-  ul.insertAdjacentElement('beforeend',list);
-  list=document.createElement('li');
   list.textContent=z.service.name;
   ul.insertAdjacentElement('beforeend',list);
   list=document.createElement('li');
