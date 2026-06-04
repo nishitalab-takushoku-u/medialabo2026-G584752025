@@ -41,8 +41,71 @@ sr.addEventListener('click',sendRequest);
 
 
 // 課題6-1 のイベントハンドラ sendRequest() の定義
+let kaisu=0;
 function sendRequest() {
-  let url='https://www.nishita-lab.org/web-contents/jsons/nhk/e1-0700-j.json';
+  // name 属性が tyannel の input 要素をすべて検索
+  let rs = document.querySelectorAll('input[name="tyannel"]');
+  let r;
+  for (r of rs) {
+    if (r.checked) {        // r が選択されていたら
+      console.log(r.value);
+     }
+    }
+  let s = document.querySelector('select#zyanru');
+  let idx = s.selectedIndex;  // idx 番目の option が選択された
+
+  let os = s.querySelectorAll('option');  // s の子要素 option をすべて検索
+  let o = os.item(idx);       // os の idx 番目の要素
+
+  console.log('選択された ' + idx + ' 番目の option の情報:');
+  console.log('  value=' + o.getAttribute('value'));  // id 属性を表示
+  console.log('  textContent='+o.textContent);
+  let service;
+  let genre;
+  if(r.value==="g1"){
+    service='g1';
+  } else if(r.value==="e1"){
+    service='e1'
+  }
+    if(o.value==="0000"){
+      genre='0000';
+    }
+    if(o.value==="0100"){
+      genre='0100';
+    }
+    if(o.value==="0205"){
+      genre='0205';
+    }
+    if(o.value==="0300") { 
+      genre='0300';
+    }
+    if(o.value==="0409"){
+      genre='0409';  
+    }
+    if(o.value==="0502"){  
+      genre='0502';
+    }
+    if(o.value==="0600"){  
+      genre='0600';
+    }
+    if(o.value==="0700"){  
+      genre='0700';
+    }
+    if(o.value==="0800"){  
+      genre='0800';
+    }
+    if(o.value==="0903"){  
+      genre='0903';
+    }
+    if(o.value==="1000"){
+      genre='1000';
+    }
+    if(o.value==="1100"){
+      genre='1100';
+    }
+  
+  
+  let url='https://www.nishita-lab.org/web-contents/jsons/nhk/'+service+'-'+genre+'-j.json';
   axios.get(url).then(showResult).catch(showError).then(finish);
 }
 
@@ -56,6 +119,59 @@ function showResult(resp) {
   console.log(data.x);
   let space=document.createElement('div');
   sr.insertAdjacentElement('afterend',space);
+  let rs = document.querySelectorAll('input[name="tyannel"]');
+  let r;
+  for (r of rs) {
+    if (r.checked) {        // r が選択されていたら
+      console.log(r.value);
+     }
+  }
+    let cont=0;
+  if(r.value==="g1"){
+    if(Number(kaisu)>0){
+      for(let z of data.list.g1){
+        let f=document.querySelector('ul');
+        f.remove;
+      }
+    }
+  for(cont of data.list.g1){
+    cont=Number(cont)+1;
+  }
+  let coont;
+  coont.textContent=cont+"件見つかりました";
+  space.insertAdjacentElement('beforeend',coont);
+  for(let z of data.list.g1){
+  let ul=document.createElement('ul');
+  space.insertAdjacentElement('afterend',ul);
+  let list=document.createElement('li');
+  list.textContent=z.start_time;
+  ul.insertAdjacentElement('beforeend',list);
+  list=document.createElement('li');
+  list.textContent=z.end_time;
+  ul.insertAdjacentElement('beforeend',list);
+  list=document.createElement('li');
+  list.textContent=z.service.name;
+  ul.insertAdjacentElement('beforeend',list);
+  list=document.createElement('li');
+  list.textContent=z.title;
+  ul.insertAdjacentElement('beforeend',list);
+  list=document.createElement('li');
+  list.textContent=z.subtitle;
+  ul.insertAdjacentElement('beforeend',list);
+  list=document.createElement('li');
+  list.textContent=z.content;
+  ul.insertAdjacentElement('beforeend',list);
+  list=document.createElement('li');
+  list.textContent=z.act;
+  ul.insertAdjacentElement('beforeend',list);
+  }
+} else if(r.value==="e1"){
+  if(Number(kaisu)>0){
+      for(let z of data.list.e1){
+        let f=document.querySelector('ul');
+        f.remove;
+      }
+    }
   for(let z of data.list.e1){
   let ul=document.createElement('ul');
   space.insertAdjacentElement('afterend',ul);
@@ -81,6 +197,8 @@ function showResult(resp) {
   list.textContent=z.act;
   ul.insertAdjacentElement('beforeend',list);
   }
+}
+kaisu=Number(kaisu+1);
 }
 
 // 課題6-1: 通信エラーが発生した時の処理
