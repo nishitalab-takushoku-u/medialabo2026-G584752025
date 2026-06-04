@@ -62,11 +62,8 @@ function sendRequest() {
   console.log('  textContent='+o.textContent);
   let service;
   let genre;
-  if(r.value==="g1"){
+  if(r.value="g1"){
     service='g1';
-  } else if(r.value==="e1"){
-    service='e1'
-  }
     if(o.value==="0000"){
       genre='0000';
     }
@@ -103,6 +100,46 @@ function sendRequest() {
     if(o.value==="1100"){
       genre='1100';
     }
+  } else if(r.value="e1"){
+    service='e1'
+    if(o.value==="0000"){
+      genre='0000';
+    }
+    if(o.value==="0100"){
+      genre='0100';
+    }
+    if(o.value==="0205"){
+      genre='0205';
+    }
+    if(o.value==="0300") { 
+      genre='0300';
+    }
+    if(o.value==="0409"){
+      genre='0409';  
+    }
+    if(o.value==="0502"){  
+      genre='0502';
+    }
+    if(o.value==="0600"){  
+      genre='0600';
+    }
+    if(o.value==="0700"){  
+      genre='0700';
+    }
+    if(o.value==="0800"){  
+      genre='0800';
+    }
+    if(o.value==="0903"){  
+      genre='0903';
+    }
+    if(o.value==="1000"){
+      genre='1000';
+    }
+    if(o.value==="1100"){
+      genre='1100';
+    }
+  }
+    
   
   
   let url='https://www.nishita-lab.org/web-contents/jsons/nhk/'+service+'-'+genre+'-j.json';
@@ -134,12 +171,8 @@ function showResult(resp) {
         f.remove;
       }
     }
-  for(cont of data.list.g1){
-    cont=Number(cont)+1;
-  }
-  let coont;
-  coont.textContent=cont+"件見つかりました";
-  space.insertAdjacentElement('beforeend',coont);
+  
+
   for(let z of data.list.g1){
   let ul=document.createElement('ul');
   space.insertAdjacentElement('afterend',ul);
