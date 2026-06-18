@@ -60,51 +60,12 @@ function sendRequest() {
   console.log('選択された ' + idx + ' 番目の option の情報:');
   console.log('  value=' + o.getAttribute('value'));  // id 属性を表示
   console.log('  textContent='+o.textContent);
-  let service;
-  let genre;
-  if(r.value="g1"){
-    service='g1';
-    if(o.value==="0000"){
-      genre='0000';
-    }
-    if(o.value==="0100"){
-      genre='0100';
-    }
-    if(o.value==="0205"){
-      genre='0205';
-    }
-    if(o.value==="0300") { 
-      genre='0300';
-    }
-    if(o.value==="0409"){
-      genre='0409';  
-    }
-    if(o.value==="0502"){  
-      genre='0502';
-    }
-    if(o.value==="0600"){  
-      genre='0600';
-    }
-    if(o.value==="0700"){  
-      genre='0700';
-    }
-    if(o.value==="0800"){  
-      genre='0800';
-    }
-    if(o.value==="0903"){  
-      genre='0903';
-    }
-    if(o.value==="1000"){
-      genre='1000';
-    }
-    if(o.value==="1100"){
-      genre='1100';
-    }
-  } else if(r.value="e1"){
+  /*let service='g1';
+  let genre='0000';
+  
+  if(r.value==="e1"){
     service='e1'
-    if(o.value==="0000"){
-      genre='0000';
-    }
+  }
     if(o.value==="0100"){
       genre='0100';
     }
@@ -137,12 +98,14 @@ function sendRequest() {
     }
     if(o.value==="1100"){
       genre='1100';
-    }
-  }
+    }*/
+  
     
   
   
-  let url='https://www.nishita-lab.org/web-contents/jsons/nhk/'+service+'-'+genre+'-j.json';
+  let url='https://www.nishita-lab.org/web-contents/jsons/nhk/'+r.value+'-'+o.getAttribute('value')+'-j.json';
+  console.log(r.value+','+o.getAttribute('value'))
+  console.log('https://www.nishita-lab.org/web-contents/jsons/nhk/'+r.value+'-'+o.getAttribute('value')+'-j.json')
   axios.get(url).then(showResult).catch(showError).then(finish);
 }
 
@@ -192,7 +155,7 @@ function showResult(resp) {
   list.textContent=z.act;
   ul.insertAdjacentElement('beforeend',list);
   }
-} else if(r.value==="e1"){
+}if(r.value==="e1"){
   if(Number(kaisu)>0){
       for(let z of data.list.e1){
         let f=document.querySelector('ul');
