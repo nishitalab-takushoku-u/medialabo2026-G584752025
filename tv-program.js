@@ -155,7 +155,7 @@ function showResult(resp) {
   list.textContent=z.act;
   ul.insertAdjacentElement('beforeend',list);
   }
-}if(r.value==="e1"){
+} else if(r.value==="e1"){
   if(Number(kaisu)>0){
       for(let z of data.list.e1){
         let f=document.querySelector('ul');
