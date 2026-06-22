@@ -100,12 +100,11 @@ function sendRequest() {
       genre='1100';
     }*/
   
-    
+    console.log(r.value + ',' + o.getAttribute('value'));
+   console.log('https://www.nishita-lab.org/web-contents/jsons/nhk/' + r.value + '-' + o.getAttribute('value') + '-j.json');
   
   
-  let url='https://www.nishita-lab.org/web-contents/jsons/nhk/'+r.value+'-'+o.getAttribute('value')+'-j.json';
-  console.log(r.value+','+o.getAttribute('value'))
-  console.log('https://www.nishita-lab.org/web-contents/jsons/nhk/'+r.value+'-'+o.getAttribute('value')+'-j.json')
+  let url='https://www.nishita-lab.org/web-contents/jsons/nhk/' + r.value + '-' +o.getAttribute('value')+ '-j.json';
   axios.get(url).then(showResult).catch(showError).then(finish);
 }
 
@@ -135,6 +134,7 @@ function showResult(resp) {
       }
     }
   
+    kaisu=Number(kaisu+1);
 
   for(let z of data.list.g1){
   let ul=document.createElement('ul');
@@ -162,6 +162,9 @@ function showResult(resp) {
         f.remove;
       }
     }
+  if(data===null){
+    console.log(data);
+  }
   for(let z of data.list.e1){
   let ul=document.createElement('ul');
   space.insertAdjacentElement('afterend',ul);
@@ -182,7 +185,7 @@ function showResult(resp) {
   ul.insertAdjacentElement('beforeend',list);
   }
 }
-kaisu=Number(kaisu+1);
+
 }
 
 // 課題6-1: 通信エラーが発生した時の処理
