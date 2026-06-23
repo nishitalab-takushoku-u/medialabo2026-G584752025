@@ -99,13 +99,14 @@ function sendRequest() {
     if(o.value==="1100"){
       genre='1100';
     }*/
-  
-    console.log(r.value + ',' + o.getAttribute('value'));
+   for (r of rs) {
+    if (r.checked) {
+   console.log(r.value + ',' + o.getAttribute('value'));
    console.log('https://www.nishita-lab.org/web-contents/jsons/nhk/' + r.value + '-' + o.getAttribute('value') + '-j.json');
   
   
   let url='https://www.nishita-lab.org/web-contents/jsons/nhk/' + r.value + '-' +o.getAttribute('value')+ '-j.json';
-  axios.get(url).then(showResult).catch(showError).then(finish);
+    axios.get(url).then(showResult).catch(showError).then(finish);}}
 }
 
 // 課題6-1: 通信が成功した時の処理は以下に記述
@@ -126,16 +127,25 @@ function showResult(resp) {
      }
   }
     let cont=0;
+  for (r of rs) {
+    if (r.checked) {
   if(r.value==="g1"){
     if(Number(kaisu)>0){
-      for(let z of data.list.g1){
+      
         let f=document.querySelector('ul');
         f.remove;
-      }
+      
     }
   
     kaisu=Number(kaisu+1);
-
+  if(data.list===null){
+    console.log(data);
+    let ul=document.createElement('ul');
+    space.insertAdjacentElement('afterend',ul);
+    let list=document.createElement('li');
+    list.textContent="見つかりませんでした";
+    ul.insertAdjacentElement('beforeend',list);
+  } else {
   for(let z of data.list.g1){
   let ul=document.createElement('ul');
   space.insertAdjacentElement('afterend',ul);
@@ -155,17 +165,23 @@ function showResult(resp) {
   list.textContent=z.act;
   ul.insertAdjacentElement('beforeend',list);
   }
+  }
 } else if(r.value==="e1"){
   if(Number(kaisu)>0){
-      for(let z of data.list.e1){
+      
         let f=document.querySelector('ul');
         f.remove;
-      }
+      
     }
-  if(data===null){
+  if(data.list===null){
     console.log(data);
-  }
-  for(let z of data.list.e1){
+    let ul=document.createElement('ul');
+    space.insertAdjacentElement('afterend',ul);
+    let list=document.createElement('li');
+    list.textContent="見つかりませんでした";
+    ul.insertAdjacentElement('beforeend',list);
+  } else {
+    for(let z of data.list.e1){
   let ul=document.createElement('ul');
   space.insertAdjacentElement('afterend',ul);
   let list=document.createElement('li');
@@ -183,6 +199,8 @@ function showResult(resp) {
   list=document.createElement('li');
   list.textContent=z.act;
   ul.insertAdjacentElement('beforeend',list);
+    }
+  }}
   }
 }
 
