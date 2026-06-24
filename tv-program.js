@@ -41,7 +41,7 @@ sr.addEventListener('click',sendRequest);
 
 
 // 課題6-1 のイベントハンドラ sendRequest() の定義
-let kaisu=0;
+
 function sendRequest() {
   // name 属性が tyannel の input 要素をすべて検索
   let rs = document.querySelectorAll('input[name="tyannel"]');
@@ -121,67 +121,100 @@ function showResult(resp) {
   sr.insertAdjacentElement('afterend',space);
   let rs = document.querySelectorAll('input[name="tyannel"]');
   let r;
+  
   for (r of rs) {
     if (r.checked) {        // r が選択されていたら
       console.log(r.value);
      }
+     
   }
-    let cont=0;
+   
   for (r of rs) {
     if (r.checked) {
-  if(r.value==="g1"){
-    if(Number(kaisu)>0){
+    if(r.value==="g1"){
+      let y = document.querySelectorAll('ul')
       
-        let f=document.querySelector('ul');
-        f.remove;
-      
-    }
+    
+    
   
-    kaisu=Number(kaisu+1);
-  if(data.list===null){
+    
+      if(data.list===null){
+      for(let z=0;z<y.length;z++){
+      let q = document.querySelector('ul');
+      q.remove()
+       
+    }
+    
+  
     console.log(data);
     let ul=document.createElement('ul');
     space.insertAdjacentElement('afterend',ul);
     let list=document.createElement('li');
     list.textContent="見つかりませんでした";
     ul.insertAdjacentElement('beforeend',list);
+    
+    
   } else {
+    
+    for(let z=0;z<y.length;z++){
+      let q = document.querySelector('ul');
+      
+        q.remove()
+      
+    }
+    
   for(let z of data.list.g1){
-  let ul=document.createElement('ul');
-  space.insertAdjacentElement('afterend',ul);
-  let list=document.createElement('li');
-  list.textContent=z.service.name;
-  ul.insertAdjacentElement('beforeend',list);
-  list=document.createElement('li');
-  list.textContent=z.title;
-  ul.insertAdjacentElement('beforeend',list);
-  list=document.createElement('li');
-  list.textContent=z.subtitle;
-  ul.insertAdjacentElement('beforeend',list);
-  list=document.createElement('li');
-  list.textContent=z.content;
-  ul.insertAdjacentElement('beforeend',list);
-  list=document.createElement('li');
-  list.textContent=z.act;
-  ul.insertAdjacentElement('beforeend',list);
+    
+    let ul=document.createElement('ul');
+    space.insertAdjacentElement('afterend',ul);
+    let list=document.createElement('li');
+    list.textContent=z.service.name;
+    ul.insertAdjacentElement('beforeend',list);
+    list=document.createElement('li');
+    list.textContent=z.title;
+    ul.insertAdjacentElement('beforeend',list);
+    list=document.createElement('li');
+    list.textContent=z.subtitle;
+    ul.insertAdjacentElement('beforeend',list);
+    list=document.createElement('li');
+    list.textContent=z.content;
+    ul.insertAdjacentElement('beforeend',list);
+    list=document.createElement('li');
+    list.textContent=z.act;
+    ul.insertAdjacentElement('beforeend',list);
+    list=document.createElement('li');
+    list.textContent=z.start_time;
+    ul.insertAdjacentElement('beforeend',list);
+    list=document.createElement('li');
+    list.textContent=z.end_time;
+    ul.insertAdjacentElement('beforeend',list);
+     
+    
+    
   }
+  
   }
 } else if(r.value==="e1"){
-  if(Number(kaisu)>0){
-      
-        let f=document.querySelector('ul');
-        f.remove;
-      
-    }
+  let y = document.querySelectorAll('ul')
   if(data.list===null){
+    for(let z=0;z<y.length;z++){
+    let q = document.querySelector('ul');
+    q.remove() 
+    }
     console.log(data);
     let ul=document.createElement('ul');
     space.insertAdjacentElement('afterend',ul);
     let list=document.createElement('li');
     list.textContent="見つかりませんでした";
     ul.insertAdjacentElement('beforeend',list);
+
   } else {
+    for(let z=0;z<y.length;z++){
+      let q = document.querySelector('ul');
+      q.remove() ;
+    }
     for(let z of data.list.e1){
+      
   let ul=document.createElement('ul');
   space.insertAdjacentElement('afterend',ul);
   let list=document.createElement('li');
@@ -199,6 +232,13 @@ function showResult(resp) {
   list=document.createElement('li');
   list.textContent=z.act;
   ul.insertAdjacentElement('beforeend',list);
+  list=document.createElement('li');
+  list.textContent=z.start_time;
+  ul.insertAdjacentElement('beforeend',list);
+  list=document.createElement('li');
+  list.textContent=z.end_time;
+  ul.insertAdjacentElement('beforeend',list);
+  
     }
   }}
   }
