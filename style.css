@@ -1,6 +1,8 @@
-p {
-  color: green;
+h3{
+    border-bottom:5.5px solid greenyellow;
 }
-p, li {
-    color: green;
+
+h1{
+    text-shadow: 1px 1px saddlebrown,2px 2px saddlebrown;
+    color: salmon;
 }
